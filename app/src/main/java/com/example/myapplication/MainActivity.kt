@@ -320,5 +320,5 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, GreetingsActivity::class.java)
             startActivity(intent)
         }
-    }
+    } // ONCREATE
 }
