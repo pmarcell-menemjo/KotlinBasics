@@ -14,9 +14,9 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity() {
     private lateinit var openCalculatorButton: Button
     private lateinit var openGreetingButton: Button
-    private lateinit var nameEditText: EditText
-    private lateinit var resultTextView: TextView
+    private lateinit var openWeatherButton: Button
 
+    /*
     data class University(
         val universityName: String,
         val departments: List<Department>
@@ -294,6 +294,7 @@ class MainActivity : AppCompatActivity() {
         val phone: String,
         val shift: String,
     )
+     */
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -308,8 +309,7 @@ class MainActivity : AppCompatActivity() {
 
         openCalculatorButton = findViewById(R.id.openCalculatorButton)
         openGreetingButton = findViewById(R.id.openGreetingButton)
-        nameEditText = findViewById(R.id.nameEditText)
-        resultTextView = findViewById(R.id.resultTextView)
+        openWeatherButton = findViewById(R.id.weatherButton)
 
         openCalculatorButton.setOnClickListener{
             val intent = Intent(this, CalculatorActivity::class.java)
