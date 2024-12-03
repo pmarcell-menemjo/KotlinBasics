@@ -320,5 +320,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, GreetingsActivity::class.java)
             startActivity(intent)
         }
+        openWeatherButton.setOnClickListener{
+            val intent = Intent(this, WeatherActivity::class.java)
+            startActivity(intent)
+        }
     } // ONCREATE
 }
