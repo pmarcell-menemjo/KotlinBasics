@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
@@ -18,8 +19,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 class WeatherActivity : AppCompatActivity() {
 
     private lateinit var textviewTemp: TextView
+    private lateinit var textviewTempmin: TextView
     private val apiKey = "d1b1ac023a2486b6b94a4f6a46198ca2"
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -31,6 +34,7 @@ class WeatherActivity : AppCompatActivity() {
 //        }
 
         textviewTemp = findViewById(R.id.textview_temp)
+        textviewTempmin = findViewById(R.id.textview_tempmin)
         fetchWeatherData()
 
 
@@ -55,6 +59,8 @@ class WeatherActivity : AppCompatActivity() {
                     if (weatherResponse != null){
                         val weatherInfo = weatherResponse.main.temp
                         textviewTemp.text = weatherInfo.toString()
+                        val weatherInfo2 = weatherResponse.main.temp_min
+                        textviewTempmin.text = weatherInfo2.toString()
                     }
                 }
             }

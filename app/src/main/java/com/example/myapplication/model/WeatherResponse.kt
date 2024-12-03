@@ -6,5 +6,6 @@ data class WeatherResponse(
 // komment
 
 data class Main(
-    val temp: Float
+    val temp: Float,
+    val temp_min: Float
 )
