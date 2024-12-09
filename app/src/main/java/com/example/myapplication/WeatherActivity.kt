@@ -3,6 +3,8 @@ package com.example.myapplication
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +24,11 @@ class WeatherActivity : AppCompatActivity() {
     private lateinit var textviewTempmin: TextView
     private lateinit var textviewHumidity: TextView
     private lateinit var textviewWindspeed: TextView
+    private lateinit var buttonCity: Button
+    private lateinit var editTextCity: EditText
+    private lateinit var textviewCity: TextView
     private val apiKey = "d1b1ac023a2486b6b94a4f6a46198ca2"
+    private var varos = "";
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,12 +45,22 @@ class WeatherActivity : AppCompatActivity() {
         textviewTempmin = findViewById(R.id.textview_tempmin)
         textviewHumidity = findViewById(R.id.textview_humidity)
         textviewWindspeed = findViewById(R.id.textview_windspeed)
-        fetchWeatherData()
+        buttonCity = findViewById(R.id.buttonCity)
+        editTextCity = findViewById(R.id.edittext_city)
+        textviewCity = findViewById(R.id.textview_city)
+
+        buttonCity.setOnClickListener{
+            val cityName = editTextCity.text
+            if(cityName.isNotBlank()){
+                varos = cityName.toString()
+            }
+            fetchWeatherData(varos)
+        }
 
 
     } // ONCREATE
 
-    private fun fetchWeatherData(){
+    private fun fetchWeatherData(varos:String){
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.openweathermap.org")
             .addConverterFactory(GsonConverterFactory.create())
@@ -52,7 +68,7 @@ class WeatherActivity : AppCompatActivity() {
 
         val weatherService = retrofit.create(WeatherService::class.java)
 
-        val call = weatherService.getWeather("Tatabánya", "metric", apiKey)
+        val call = weatherService.getWeather(varos, "metric", apiKey)
         call.enqueue(object: Callback<WeatherResponse>{
             override fun onResponse(
                 call: Call<WeatherResponse>,
@@ -62,13 +78,14 @@ class WeatherActivity : AppCompatActivity() {
                     val weatherResponse = response.body()
                     if (weatherResponse != null){
                         val weatherInfo = weatherResponse.main.temp
-                        textviewTemp.text = "current temp: " + weatherInfo.toString()
+                        textviewTemp.text = "current temp: " + weatherInfo.toString() + " °C"
                         val weatherInfo2 = weatherResponse.main.temp_min
-                        textviewTempmin.text = "min temp: " + weatherInfo2.toString()
+                        textviewTempmin.text = "min temp: " + weatherInfo2.toString() + " °C"
                         val weatherInfo3 = weatherResponse.main.humidity
-                        textviewHumidity.text = "humidity: " + weatherInfo3.toString()
+                        textviewHumidity.text = "humidity: " + weatherInfo3.toString() + "%"
                         val weatherInfo4 = weatherResponse.wind.speed
-                        textviewWindspeed.text = "wind speed: " + weatherInfo4.toString()
+                        textviewWindspeed.text = "wind speed: " + weatherInfo4.toString() + " km/h"
+                        textviewCity.text = varos
                     }
                 }
             }

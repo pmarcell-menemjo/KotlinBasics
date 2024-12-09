@@ -7,6 +7,31 @@
     android:gravity="center"
     tools:context=".WeatherActivity">
 
+    <EditText
+        android:id="@+id/edittext_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:inputType="text"
+        android:background="@android:drawable/edit_text"
+        android:hint="Add meg a várost" />
+
+    <Button
+        android:id="@+id/buttonCity"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Go ocskosom"
+        android:layout_marginBottom="36dp" />
+
+    <TextView
+        android:id="@+id/textview_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="lassan érkezem drágám"
+        android:textSize="20sp" />
+
     <TextView
         android:id="@+id/textview_temp"
         android:layout_width="match_parent"
