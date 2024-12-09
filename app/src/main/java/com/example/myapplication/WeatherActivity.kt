@@ -62,7 +62,7 @@ class WeatherActivity : AppCompatActivity() {
                     val weatherResponse = response.body()
                     if (weatherResponse != null){
                         val weatherInfo = weatherResponse.main.temp
-                        textviewTemp.text = "current temp: fasz " + weatherInfo.toString()
+                        textviewTemp.text = "current temp: " + weatherInfo.toString()
                         val weatherInfo2 = weatherResponse.main.temp_min
                         textviewTempmin.text = "min temp: " + weatherInfo2.toString()
                         val weatherInfo3 = weatherResponse.main.humidity
