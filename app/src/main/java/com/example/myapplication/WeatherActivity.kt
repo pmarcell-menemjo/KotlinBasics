@@ -20,6 +20,8 @@ class WeatherActivity : AppCompatActivity() {
 
     private lateinit var textviewTemp: TextView
     private lateinit var textviewTempmin: TextView
+    private lateinit var textviewHumidity: TextView
+    private lateinit var textviewWindspeed: TextView
     private val apiKey = "d1b1ac023a2486b6b94a4f6a46198ca2"
 
     @SuppressLint("MissingInflatedId")
@@ -35,6 +37,8 @@ class WeatherActivity : AppCompatActivity() {
 
         textviewTemp = findViewById(R.id.textview_temp)
         textviewTempmin = findViewById(R.id.textview_tempmin)
+        textviewHumidity = findViewById(R.id.textview_humidity)
+        textviewWindspeed = findViewById(R.id.textview_windspeed)
         fetchWeatherData()
 
 
@@ -58,9 +62,13 @@ class WeatherActivity : AppCompatActivity() {
                     val weatherResponse = response.body()
                     if (weatherResponse != null){
                         val weatherInfo = weatherResponse.main.temp
-                        textviewTemp.text = weatherInfo.toString()
+                        textviewTemp.text = "current temp: fasz " + weatherInfo.toString()
                         val weatherInfo2 = weatherResponse.main.temp_min
-                        textviewTempmin.text = weatherInfo2.toString()
+                        textviewTempmin.text = "min temp: " + weatherInfo2.toString()
+                        val weatherInfo3 = weatherResponse.main.humidity
+                        textviewHumidity.text = "humidity: " + weatherInfo3.toString()
+                        val weatherInfo4 = weatherResponse.wind.speed
+                        textviewWindspeed.text = "wind speed: " + weatherInfo4.toString()
                     }
                 }
             }
