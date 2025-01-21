@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var openCalculatorButton: Button
     private lateinit var openGreetingButton: Button
     private lateinit var openWeatherButton: Button
+    private lateinit var openUserListButton: Button
 
     /*
     data class University(
@@ -297,6 +299,7 @@ class MainActivity : AppCompatActivity() {
      */
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -310,18 +313,22 @@ class MainActivity : AppCompatActivity() {
         openCalculatorButton = findViewById(R.id.openCalculatorButton)
         openGreetingButton = findViewById(R.id.openGreetingButton)
         openWeatherButton = findViewById(R.id.weatherButton)
+        openUserListButton = findViewById(R.id.openUserListButton)
 
         openCalculatorButton.setOnClickListener{
             val intent = Intent(this, CalculatorActivity::class.java)
             startActivity(intent)
         }
-
         openGreetingButton.setOnClickListener{
             val intent = Intent(this, GreetingsActivity::class.java)
             startActivity(intent)
         }
         openWeatherButton.setOnClickListener{
             val intent = Intent(this, WeatherActivity::class.java)
+            startActivity(intent)
+        }
+        openUserListButton.setOnClickListener{
+            val intent = Intent(this, UserListActivity::class.java)
             startActivity(intent)
         }
     } // ONCREATE
