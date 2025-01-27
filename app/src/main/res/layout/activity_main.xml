@@ -12,7 +12,7 @@
 
     <Button
         android:id="@+id/openCalculatorButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Számológép megnyitása"
         android:padding="12dp"
@@ -20,7 +20,7 @@
 
     <Button
         android:id="@+id/openGreetingButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Üdvözlés megnyitása"
         android:padding="12dp"
@@ -28,7 +28,7 @@
 
     <Button
         android:id="@+id/weatherButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Weather"
         android:padding="12dp"
@@ -39,6 +39,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="User lista megnyitása"
+        android:padding="12dp"
+        android:layout_marginTop="32dp" />
+
+    <Button
+        android:id="@+id/openRandomUserList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Random User lista megnyitása"
         android:padding="12dp"
         android:layout_marginTop="32dp" />
 

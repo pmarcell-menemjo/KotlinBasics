@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var openGreetingButton: Button
     private lateinit var openWeatherButton: Button
     private lateinit var openUserListButton: Button
+    private lateinit var openRandomUserList: Button
 
     /*
     data class University(
@@ -314,6 +315,7 @@ class MainActivity : AppCompatActivity() {
         openGreetingButton = findViewById(R.id.openGreetingButton)
         openWeatherButton = findViewById(R.id.weatherButton)
         openUserListButton = findViewById(R.id.openUserListButton)
+        openRandomUserList = findViewById(R.id.openRandomUserList)
 
         openCalculatorButton.setOnClickListener{
             val intent = Intent(this, CalculatorActivity::class.java)
@@ -329,6 +331,10 @@ class MainActivity : AppCompatActivity() {
         }
         openUserListButton.setOnClickListener{
             val intent = Intent(this, UserListActivity::class.java)
+            startActivity(intent)
+        }
+        openRandomUserList.setOnClickListener{
+            val intent= Intent(this, RandomUserListActivity::class.java)
             startActivity(intent)
         }
     } // ONCREATE
